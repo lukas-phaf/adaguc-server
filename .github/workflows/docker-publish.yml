@@ -36,6 +36,7 @@ jobs:
 #          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Invoke deployment hook
+        if: github.repository == 'KNMI/adaguc-server' && github.event_name != 'pull_request'
         uses: distributhor/workflow-webhook@v2
         env:
           webhook_type: 'form-urlencoded'
