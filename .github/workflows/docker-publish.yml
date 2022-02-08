@@ -38,5 +38,5 @@ jobs:
       - name: Invoke deployment hook
         uses: distributhor/workflow-webhook@v2
         env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          webhook_url: ${{ secrets.GITLAB_WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.GITLAB_WEBHOOK_SECRET }}
