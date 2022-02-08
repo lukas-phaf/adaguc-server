@@ -40,5 +40,5 @@ jobs:
         env:
           webhook_type: 'form-urlencoded'
           webhook_url: ${{ secrets.GITLAB_WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.GITLAB_WEBHOOK_SECRET }}
+#          webhook_secret: ${{ secrets.GITLAB_WEBHOOK_SECRET }}
           data: variables[DOCKER_IMAGE_VERSION]=${{ steps.meta.outputs.version }}
