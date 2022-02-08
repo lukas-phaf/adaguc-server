@@ -27,10 +27,16 @@ jobs:
         with:
           images: openearth/adaguc-server
 
-      - name: Build and potentially push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: ${{ github.repository == 'KNMI/adaguc-server' &&  github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+#      - name: Build and potentially push Docker image
+#        uses: docker/build-push-action@v2
+#        with:
+#          context: .
+#          push: ${{ github.repository == 'KNMI/adaguc-server' &&  github.event_name != 'pull_request' }}
+#          tags: ${{ steps.meta.outputs.tags }}
+#          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Invoke deployment hook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
